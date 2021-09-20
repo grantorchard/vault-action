@@ -14598,7 +14598,7 @@ const got = __webpack_require__(77).default;
 const jsonata = __webpack_require__(350);
 const { auth: { retrieveToken }, secrets: { getSecrets } } = __webpack_require__(676);
 
-const AUTH_METHODS = ['approle', 'token', 'github', 'jwt', 'kubernetes', 'github_jwt'];
+const AUTH_METHODS = ['approle', 'token', 'github', 'jwt', 'kubernetes', 'oidc'];
 
 async function exportSecrets() {
     const vaultUrl = core.getInput('url', { required: true });
