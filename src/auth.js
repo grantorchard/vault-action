@@ -31,11 +31,11 @@ async function retrieveToken(method, client) {
             const jwt = generateJwt(privateKey, keyPassword, Number(tokenTtl));
             return await getClientToken(client, method, path, { jwt: jwt, role: role });
         }
-				case 'github_jwt': {
+				case 'oidc': {
 					const audience = core.getInput('audience');
 					const role = core.getInput('role', { required: true });
 					const jwt = core.getIDToken(audience);
-					return await getClientToken(client, "jwt", path, { jwt: jwt, role: role });
+					return await getClientToken(client, method, path, { jwt: jwt, role: role });
 				}
         case 'kubernetes': {
             const role = core.getInput('role', { required: true })

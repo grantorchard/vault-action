@@ -1015,6 +1015,12 @@ async function retrieveToken(method, client) {
             }
             return await getClientToken(client, method, path, { jwt: data, role: role })
         }
+				case 'oidc': {
+					const audience = core.getInput('audience');
+					const role = core.getInput('role', { required: true });
+					const jwt = core.getIDToken(audience);
+					return await getClientToken(client, method, path, { jwt: jwt, role: role });
+				}
 
         default: {
             if (!method || method === 'token') {
