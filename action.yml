@@ -73,6 +73,10 @@ inputs:
     description: 'Time in seconds, after which token expires'
     required: false
     default: 3600
+  audience:
+    description: 'The audience that will be used for the Github JWT'
+    required: false
+    default: 'sigstore'
 runs:
   using: 'node12'
   main: 'dist/index.js'
