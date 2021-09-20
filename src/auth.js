@@ -34,9 +34,8 @@ async function retrieveToken(method, client) {
 				case 'github_jwt': {
 					const audience = core.getInput('audience');
 					const role = core.getInput('role', { required: true });
-					const tokenTtl = core.getInput('jwtTtl', { required: false }) || '3600'; // 1 hour
 					const jwt = core.getIDToken(audience);
-					return await getClientToken(client, method, path, { jwt: jwt, role: role });
+					return await getClientToken(client, "jwt", path, { jwt: jwt, role: role });
 				}
         case 'kubernetes': {
             const role = core.getInput('role', { required: true })
